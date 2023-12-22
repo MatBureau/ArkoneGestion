@@ -31,19 +31,42 @@ namespace ArkoneGestionEvenement.Vues
 
         private void BTN_create_Click(object sender, RoutedEventArgs e)
         {
-            if (tbx_password.Password != tbx_passwordConfirme.Password)
-            {
-                MessageBox.Show("les mots de passes ne sont pas identiques");
-                
-            }
-            else
+
+            
             {
                 string userName = tbx_username.Text;
                 string mail = tbx_mail.Text;
                 string password = tbx_password.Password;
                 bool isVigile = false;
 
-                if (cbx_vigile.IsChecked == true)
+                if (!Utils.ControlSaisie.IsValidEmail(mail))
+                {
+                    MessageBox.Show("Adresse e-mail invalide");
+                    return;
+                }
+
+                // Vérification du format du nom d'utilisateur
+                if (!Utils.ControlSaisie.IsValidUsername(userName))
+                {
+                    MessageBox.Show("Nom d'utilisateur invalide");
+                    return;
+                }
+
+                // Vérification du format du mot de passe
+                if (!Utils.ControlSaisie.IsValidPassword(password))
+                {
+                    MessageBox.Show("Mot de passe invalide");
+                    return;
+                }
+
+                if (tbx_password.Password != tbx_passwordConfirme.Password)
+                {
+                    MessageBox.Show("les mots de passes ne sont pas identiques");
+
+                }
+                else
+
+                    if (cbx_vigile.IsChecked == true)
                 {
                     isVigile = true;
                 }
