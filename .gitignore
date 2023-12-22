@@ -1,0 +1,6 @@
+# Exclude Visual Studio cache files
+.vs/
+
+# Exclude build output directories
+bin/
+obj/
