@@ -33,23 +33,23 @@ public partial class ArkoneGestionContext : DbContext
     {
         modelBuilder.Entity<CodesAcce>(entity =>
         {
-            entity.HasKey(e => e.IdCodeAcces).HasName("PK__CodesAcc__0AA78C880E772907");
+            entity.HasKey(e => e.IdCodeAcces).HasName("PK__CodesAcc__0AA78C88E7CB4C4F");
 
             entity.Property(e => e.Code).HasMaxLength(6);
             entity.Property(e => e.Statut).HasMaxLength(20);
 
             entity.HasOne(d => d.IdEventNavigation).WithMany(p => p.CodesAcces)
                 .HasForeignKey(d => d.IdEvent)
-                .HasConstraintName("FK__CodesAcce__IdEve__3B75D760");
+                .HasConstraintName("FK__CodesAcce__IdEve__2C3393D0");
 
             entity.HasOne(d => d.IdInviteNavigation).WithMany(p => p.CodesAcces)
                 .HasForeignKey(d => d.IdInvite)
-                .HasConstraintName("FK__CodesAcce__IdInv__3A81B327");
+                .HasConstraintName("FK__CodesAcce__IdInv__2B3F6F97");
         });
 
         modelBuilder.Entity<Evenement>(entity =>
         {
-            entity.HasKey(e => e.IdEvent).HasName("PK__Evenemen__E0B2AF39658AEBEC");
+            entity.HasKey(e => e.IdEvent).HasName("PK__Evenemen__E0B2AF396A12E788");
 
             entity.ToTable("Evenement");
 
@@ -59,11 +59,15 @@ public partial class ArkoneGestionContext : DbContext
             entity.Property(e => e.Lieu).HasMaxLength(255);
             entity.Property(e => e.Longitude).HasMaxLength(255);
             entity.Property(e => e.Nom).HasMaxLength(255);
+
+            entity.HasOne(d => d.IdOrganisateurNavigation).WithMany(p => p.Evenements)
+                .HasForeignKey(d => d.IdOrganisateur)
+                .HasConstraintName("FK__Evenement__IdOrg__267ABA7A");
         });
 
         modelBuilder.Entity<Invite>(entity =>
         {
-            entity.HasKey(e => e.IdInvite).HasName("PK__Invite__22B0C94EFF40E68A");
+            entity.HasKey(e => e.IdInvite).HasName("PK__Invite__22B0C94EBC18E359");
 
             entity.ToTable("Invite");
 
@@ -76,7 +80,7 @@ public partial class ArkoneGestionContext : DbContext
 
         modelBuilder.Entity<SousEvenement>(entity =>
         {
-            entity.HasKey(e => e.IdSousEvent).HasName("PK__SousEven__A5C86BE648C40E77");
+            entity.HasKey(e => e.IdSousEvent).HasName("PK__SousEven__A5C86BE62CB79868");
 
             entity.ToTable("SousEvenement");
 
@@ -86,12 +90,12 @@ public partial class ArkoneGestionContext : DbContext
 
             entity.HasOne(d => d.IdEventNavigation).WithMany(p => p.SousEvenements)
                 .HasForeignKey(d => d.IdEvent)
-                .HasConstraintName("FK__SousEvene__IdEve__3E52440B");
+                .HasConstraintName("FK__SousEvene__IdEve__2F10007B");
         });
 
         modelBuilder.Entity<Utilisateur>(entity =>
         {
-            entity.HasKey(e => e.IdUtilisateur).HasName("PK__Utilisat__45A4C157952F6E54");
+            entity.HasKey(e => e.IdUtilisateur).HasName("PK__Utilisat__45A4C15779500DCA");
 
             entity.ToTable("Utilisateur");
 

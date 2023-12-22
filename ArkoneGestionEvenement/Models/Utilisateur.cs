@@ -14,4 +14,6 @@ public partial class Utilisateur
     public string? Email { get; set; }
 
     public bool? IsVigile { get; set; }
+
+    public virtual ICollection<Evenement> Evenements { get; set; } = new List<Evenement>();
 }
