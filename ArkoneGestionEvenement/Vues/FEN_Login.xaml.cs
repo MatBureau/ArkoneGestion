@@ -39,12 +39,14 @@ namespace ArkoneGestionEvenement.Vues
             string userName = tbx_user.Text;
             string password = tbx_password.Password;
 
+            string hashedPassword = Utils.SecurityManager.HashPassword(password);
+
+
             // Appelez la fonction SelectJoueur avec les valeurs de l'interface utilisateur
-            Utilisateur Utilisateur = ConnexionService.SelectJoueur(userName, password);
+            Utilisateur Utilisateur = ConnexionService.SelectUtilisateurByNameAndPwd(userName, hashedPassword);
 
             if (Utilisateur != null)
             {
-                // Le joueur a été trouvé, vous pouvez effectuer des actions supplémentaires ici
                 VariablesGlobales.Utilisateur = Utilisateur;
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
@@ -52,7 +54,6 @@ namespace ArkoneGestionEvenement.Vues
             }
             else
             {
-                // Le joueur n'a pas été trouvé ou le mot de passe est incorrect
                 MessageBox.Show("Identifiant ou mot de passe incorrect.");
             }
         }
@@ -84,6 +85,11 @@ namespace ArkoneGestionEvenement.Vues
             }
         }
 
-
+        private void BTN_signUp_Click(object sender, RoutedEventArgs e)
+        {
+            FEN_Inscription fen_inscription = new FEN_Inscription();
+            fen_inscription.Show();
+            this.Close();
+        }
     }
 }

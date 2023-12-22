@@ -9,7 +9,7 @@ namespace ArkoneGestionEvenement.DAL
 {
     public static class ConnexionService
     {
-        public static Utilisateur SelectJoueur(string userName, string password)
+        public static Utilisateur SelectUtilisateurByNameAndPwd(string userName, string password)
         {
             using (ArkoneGestionContext db = new ArkoneGestionContext())
             {
@@ -20,6 +20,15 @@ namespace ArkoneGestionEvenement.DAL
                     return utilisateur;
                 }
                 return null;
+            }
+        }
+
+        public static void AddUtilisateur(Utilisateur utilisateur)
+        {
+            using (ArkoneGestionContext db = new ArkoneGestionContext())
+            {
+                db.Utilisateurs.Add(utilisateur);
+                db.SaveChanges();
             }
         }
     }
