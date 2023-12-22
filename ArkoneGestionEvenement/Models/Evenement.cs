@@ -17,7 +17,11 @@ public partial class Evenement
 
     public DateTime? DateEvenement { get; set; }
 
+    public int? IdOrganisateur { get; set; }
+
     public virtual ICollection<CodesAcce> CodesAcces { get; set; } = new List<CodesAcce>();
+
+    public virtual Utilisateur? IdOrganisateurNavigation { get; set; }
 
     public virtual ICollection<SousEvenement> SousEvenements { get; set; } = new List<SousEvenement>();
 }
