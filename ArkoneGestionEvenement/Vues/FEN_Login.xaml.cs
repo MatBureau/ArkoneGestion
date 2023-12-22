@@ -25,6 +25,13 @@ namespace ArkoneGestionEvenement.Vues
         public FEN_Login()
         {
             InitializeComponent();
+            BitmapImage logo = new BitmapImage();
+            logo.BeginInit();
+            var path = System.IO.Path.Combine(Environment.CurrentDirectory, "Assets", "Images", "logo.png");
+            var uri = new Uri(path);
+            logo.UriSource = uri;
+            logo.EndInit();
+            img_logo.Source = logo;
         }
 
         private void loginBtn_Click(object sender, RoutedEventArgs e)
@@ -54,5 +61,29 @@ namespace ArkoneGestionEvenement.Vues
         {
             this.Close ();
         }
+
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                this.DragMove();
+        }
+
+        private void tbx_password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                loginBtn_Click(sender, e);
+            }
+        }
+
+        private void tbx_user_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                loginBtn_Click(sender, e);
+            }
+        }
+
+
     }
 }
