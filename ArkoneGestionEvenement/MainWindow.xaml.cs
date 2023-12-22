@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ArkoneGestionEvenement.Vues;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace ArkoneGestionEvenement
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            FEN_ModuleOrganisateur fen = new FEN_ModuleOrganisateur();
+            fen.Show();
         }
     }
 }

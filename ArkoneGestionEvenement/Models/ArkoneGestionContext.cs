@@ -53,7 +53,6 @@ public partial class ArkoneGestionContext : DbContext
 
             entity.ToTable("Evenement");
 
-            entity.Property(e => e.IdEvent).ValueGeneratedNever();
             entity.Property(e => e.DateEvenement).HasColumnType("datetime");
             entity.Property(e => e.Latitude).HasMaxLength(255);
             entity.Property(e => e.Lieu).HasMaxLength(255);
@@ -71,7 +70,6 @@ public partial class ArkoneGestionContext : DbContext
 
             entity.ToTable("Invite");
 
-            entity.Property(e => e.IdInvite).ValueGeneratedNever();
             entity.Property(e => e.Email).HasMaxLength(255);
             entity.Property(e => e.Nom).HasMaxLength(255);
             entity.Property(e => e.Prenom).HasMaxLength(255);
@@ -84,7 +82,6 @@ public partial class ArkoneGestionContext : DbContext
 
             entity.ToTable("SousEvenement");
 
-            entity.Property(e => e.IdSousEvent).ValueGeneratedNever();
             entity.Property(e => e.DateHeure).HasColumnType("datetime");
             entity.Property(e => e.NomSousEvent).HasMaxLength(255);
 
@@ -99,7 +96,6 @@ public partial class ArkoneGestionContext : DbContext
 
             entity.ToTable("Utilisateur");
 
-            entity.Property(e => e.IdUtilisateur).ValueGeneratedNever();
             entity.Property(e => e.Email).HasMaxLength(255);
             entity.Property(e => e.MotDePasse).HasMaxLength(255);
             entity.Property(e => e.NomUtilisateur).HasMaxLength(255);
