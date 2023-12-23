@@ -9,6 +9,7 @@ namespace ArkoneGestionEvenement.Utils
 {
     public static class VariablesGlobales
     {
+        public static Utilisateur Utilisateur { get; set; }
         public static Utilisateur UtilisateurCourant {get; set;}
     }
 }
