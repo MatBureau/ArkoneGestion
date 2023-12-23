@@ -65,7 +65,7 @@
               Content="{materialDesign:PackIcon AccountPlus}"
               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
               ToolTip="Icon" Canvas.Left="1091" Canvas.Top="486" Height="44" Width="77" Click="BTN_AddInvite_Click" />
-            <DataGrid IsReadOnly="True" x:Name="DTG_Invite" ItemsSource="{Binding lst_Invites}" AutoGenerateColumns="False" HorizontalAlignment="Left" Width="782" Height="511" VerticalAlignment="Top" SelectionChanged="DataGrid_SelectionChanged" Canvas.Left="40" Canvas.Top="49" CanUserAddRows="False">
+            <DataGrid IsReadOnly="True" x:Name="DTG_Invite" ItemsSource="{Binding lst_Invites}" AutoGenerateColumns="False" HorizontalAlignment="Left" Width="782" Height="511" VerticalAlignment="Top" SelectionChanged="DataGrid_SelectionChanged" Canvas.Left="40" Canvas.Top="49" CanUserAddRows="False" Cursor="">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding IdInvite}" Width="100" />
                     <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" Width="150"/>
