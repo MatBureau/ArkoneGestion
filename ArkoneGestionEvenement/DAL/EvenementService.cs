@@ -28,5 +28,13 @@ namespace ArkoneGestionEvenement.DAL
                 return eventToAdd;
             }
         }
+
+        public static Evenement GetEvenement(int id)
+        {
+            using (ArkoneGestionContext db = new ArkoneGestionContext())
+            {
+                return db.Evenements.Find(id);
+            }
+        }
     }
 }

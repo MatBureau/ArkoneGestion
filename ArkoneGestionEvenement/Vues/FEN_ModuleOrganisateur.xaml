@@ -13,7 +13,7 @@
         FontFamily="{materialDesign:MaterialDesignFont}"
         Title="FEN_ModuleOrganisateur" Height="652" Width="1344" MouseMove="Window_MouseMove" WindowStyle="None" ResizeMode="NoResize" BorderThickness="2" BorderBrush="MediumPurple" WindowStartupLocation="CenterScreen">
     <Grid>
-        <DataGrid x:Name="DTG_Event" ItemsSource="{Binding evenements}" Margin="10,33,0,0" AutoGenerateColumns="False" HorizontalAlignment="Left" Width="1065" Height="556" VerticalAlignment="Top" SelectionChanged="DataGrid_SelectionChanged">
+        <DataGrid IsReadOnly="True" CanUserAddRows="False" x:Name="DTG_Event" ItemsSource="{Binding evenements}" Margin="10,33,0,0" AutoGenerateColumns="False" HorizontalAlignment="Left" Width="1065" Height="556" VerticalAlignment="Top" SelectionChanged="DataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding IdEvent}" Width="100" />
                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" Width="150"/>
@@ -40,15 +40,32 @@
                 HorizontalAlignment="Left" Width="140" Height="32" VerticalAlignment="Top" Click="BTN_InviteList_Click" Margin="74,102,0,0" Cursor="Hand">
                 <TextBlock
               Text="Invités" />
-
+            </Button>
+            <Button x:Name="BTN_ModuleVigile"
+                materialDesign:ButtonAssist.CornerRadius="10"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                HorizontalAlignment="Left" Width="140" Height="32" VerticalAlignment="Top" Click="BTN_ModuleVigile_Click" Margin="74,186,0,0" Cursor="Hand">
+                <TextBlock
+              Text="Validation code" />
             </Button>
         </Grid>
         <Button x:Name="BTN_Exit"
             Content="{materialDesign:PackIcon ExitToApp}"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
             ToolTip="Icon" Margin="1284,610,10,10" Click="BTN_Exit_Click" />
-        <Canvas x:Name="CNV_Invites" Background="White" Visibility="Hidden">
-            <DataGrid x:Name="DTG_Invite" ItemsSource="{Binding lst_Invites}" AutoGenerateColumns="False" HorizontalAlignment="Left" Width="782" Height="511" VerticalAlignment="Top" SelectionChanged="DataGrid_SelectionChanged" Canvas.Left="40" Canvas.Top="49">
+        <Canvas x:Name="CNV_Invites" Background="White" Visibility="Visible">
+            <Label Canvas.Left="1062" Canvas.Top="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" FontSize="16">Ajouter un invité :</Label>
+            <TextBox x:Name="TBX_NomInvite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Canvas.Left="1054" Canvas.Top="90" materialDesign:HintAssist.HelperText="Nom"></TextBox>
+            <TextBox x:Name="TBX_PrenomInvite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="153" Canvas.Left="1054" Canvas.Top="201" materialDesign:HintAssist.HelperText="Prénom"></TextBox>
+            <TextBox x:Name="TBX_TelephoneInvite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="153" Canvas.Left="1053" Canvas.Top="301" materialDesign:HintAssist.HelperText="Téléphone"></TextBox>
+            <TextBox x:Name="TBX_EmailInvite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="153" Canvas.Left="1054" Canvas.Top="400" materialDesign:HintAssist.HelperText="Email"></TextBox>
+            <Button
+              x:Name="BTN_AddInvite"
+              Content="{materialDesign:PackIcon AccountPlus}"
+              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+              ToolTip="Icon" Canvas.Left="1091" Canvas.Top="486" Height="44" Width="77" Click="BTN_AddInvite_Click" />
+            <DataGrid IsReadOnly="True" x:Name="DTG_Invite" ItemsSource="{Binding lst_Invites}" AutoGenerateColumns="False" HorizontalAlignment="Left" Width="782" Height="511" VerticalAlignment="Top" SelectionChanged="DataGrid_SelectionChanged" Canvas.Left="40" Canvas.Top="49" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding IdInvite}" Width="100" />
                     <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" Width="150"/>

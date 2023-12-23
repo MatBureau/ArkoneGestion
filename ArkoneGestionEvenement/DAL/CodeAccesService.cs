@@ -43,5 +43,22 @@ namespace ArkoneGestionEvenement.DAL
             }
                 
         }
+        public static CodesAcce GetCodeAcces(string code)
+        {
+            using (ArkoneGestionContext db = new ArkoneGestionContext())
+            {
+                return db.CodesAcces.Where(e => e.Code == code).FirstOrDefault();
+            }
+        }
+        //fonction pour modifier un code d'acces
+        public static CodesAcce UpdateCodeAcces(CodesAcce codeToUpdate)
+        {
+            using (ArkoneGestionContext db = new ArkoneGestionContext())
+            {
+                db.Entry(codeToUpdate).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                db.SaveChanges();
+                return codeToUpdate;
+            }
+        }
     }
 }

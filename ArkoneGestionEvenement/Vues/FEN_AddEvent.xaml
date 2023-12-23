@@ -11,7 +11,7 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="{materialDesign:MaterialDesignFont}"
-        Title="FEN_AddEvent" Height="450" Width="800" ResizeMode="NoResize" WindowStyle="None" BorderThickness="2" BorderBrush="MediumPurple" MouseMove="Window_MouseMove">
+        Title="FEN_AddEvent" Height="450" Width="800" ResizeMode="NoResize" WindowStyle="None" BorderThickness="2" BorderBrush="MediumPurple" MouseMove="Window_MouseMove" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid Margin="0,0,470,358">
             <TextBox
@@ -90,7 +90,7 @@
           materialDesign:HintAssist.Hint="Date de l'évenement"
           materialDesign:TextFieldAssist.HasClearButton="True"
           Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="320,173,320,0" VerticalAlignment="Top" />
-        <DataGrid x:Name="DTG_Invite" ItemsSource="{Binding lst_Invites}" Margin="48,223,0,0"  AutoGenerateColumns="False" HorizontalAlignment="Left" Width="330" Height="140" VerticalAlignment="Top" SelectionChanged="DataGrid_SelectionChanged" SelectionMode="Extended">
+        <DataGrid IsReadOnly="True" CanUserAddRows="False" x:Name="DTG_Invite" ItemsSource="{Binding lst_Invites}" Margin="48,223,0,0"  AutoGenerateColumns="False" HorizontalAlignment="Left" Width="330" Height="140" VerticalAlignment="Top" SelectionChanged="DataGrid_SelectionChanged" SelectionMode="Extended">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding IdInvite}" Width="100" />
                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" Width="150"/>
@@ -99,7 +99,7 @@
                 <DataGridTextColumn Header="Telephone" Binding="{Binding Telephone}" Width="150"/>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="DTG_SousEvent" ItemsSource="{Binding lst_SousEvent}" Margin="400,223,0,0" AutoGenerateColumns="False" HorizontalAlignment="Left" Width="330" Height="140" VerticalAlignment="Top" SelectionChanged="DataGrid_SelectionChanged">
+        <DataGrid CanUserAddRows="False" IsReadOnly="True" x:Name="DTG_SousEvent" ItemsSource="{Binding lst_SousEvent}" Margin="400,223,0,0" AutoGenerateColumns="False" HorizontalAlignment="Left" Width="330" Height="140" VerticalAlignment="Top" SelectionChanged="DataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding IdSousEvent}" Width="100" />
                 <DataGridTextColumn Header="Date/Heure" Binding="{Binding DateHeure}" Width="150"/>

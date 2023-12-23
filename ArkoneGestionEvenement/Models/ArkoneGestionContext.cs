@@ -27,13 +27,13 @@ public partial class ArkoneGestionContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=192.168.29.13,1433\\MSSQLSERVER;User ID=sa;Password=erty64%;Database=ArkoneGestion;TrustServerCertificate=true;");
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-B50VL43;User ID=sa;Password=xrPTA-123;Database=ArkoneGestion;TrustServerCertificate=true;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<CodesAcce>(entity =>
         {
-            entity.HasKey(e => e.IdCodeAcces).HasName("PK__CodesAcc__0AA78C88E7CB4C4F");
+            entity.HasKey(e => e.IdCodeAcces).HasName("PK__CodesAcc__0AA78C881E2B5690");
 
             entity.Property(e => e.Code).HasMaxLength(6);
             entity.Property(e => e.Statut).HasMaxLength(20);
