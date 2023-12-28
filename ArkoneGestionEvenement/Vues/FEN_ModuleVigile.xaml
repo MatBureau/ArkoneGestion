@@ -13,7 +13,11 @@
         FontFamily="{materialDesign:MaterialDesignFont}"
         Title="FEN_ModuleVigile" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" MouseMove="Window_MouseMove">
     <Grid>
-        <TextBox x:Name="TBX_CodeAcces" HorizontalAlignment="Center" Margin="0,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="270" Height="95" FontSize="72" BorderThickness="2" BorderBrush="#FFDAA4DA" MaxLength="6"/>
+        <TextBox x:Name="TBX_CodeAcces" HorizontalAlignment="Center" Margin="0,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="335" Height="95" FontSize="72" BorderThickness="2" BorderBrush="#FFDAA4DA" MaxLength="6" HorizontalContentAlignment="Center"/>
+        <Button x:Name="BTN_Exit"
+        Content="{materialDesign:PackIcon ExitToApp}"
+        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+        ToolTip="Icon" Margin="741,408,10,10" Click="BTN_Exit_Click" />
         <Button
           x:Name="BTN_ValiderCode"
           IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"

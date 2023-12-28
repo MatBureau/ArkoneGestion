@@ -13,7 +13,7 @@
         FontFamily="{materialDesign:MaterialDesignFont}"
         Title="FEN_ModuleOrganisateur" Height="652" Width="1344" MouseMove="Window_MouseMove" WindowStyle="None" ResizeMode="NoResize" BorderThickness="2" BorderBrush="MediumPurple" WindowStartupLocation="CenterScreen">
     <Grid>
-        <DataGrid IsReadOnly="True" CanUserAddRows="False" x:Name="DTG_Event" ItemsSource="{Binding evenements}" Margin="10,33,0,0" AutoGenerateColumns="False" HorizontalAlignment="Left" Width="1065" Height="556" VerticalAlignment="Top" SelectionChanged="DataGrid_SelectionChanged">
+        <DataGrid IsReadOnly="True" CanUserAddRows="False" x:Name="DTG_Event" ItemsSource="{Binding evenements}" Margin="10,108,0,0" AutoGenerateColumns="False" HorizontalAlignment="Left" Width="1065" Height="481" VerticalAlignment="Top" SelectionChanged="DataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding IdEvent}" Width="100" />
                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" Width="150"/>
@@ -24,7 +24,7 @@
                 <DataGridTextColumn Header="Organisateur" Binding="{Binding IdOrganisateur}" Width="150"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Grid Margin="1080,33,10,369">
+        <Grid Margin="1080,108,10,294">
             <Button x:Name="BTN_AddEvent"
                 materialDesign:ButtonAssist.CornerRadius="10"
                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
@@ -53,8 +53,8 @@
         <Button x:Name="BTN_Exit"
             Content="{materialDesign:PackIcon ExitToApp}"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-            ToolTip="Icon" Margin="1284,610,10,10" Click="BTN_Exit_Click" />
-        <Canvas x:Name="CNV_Invites" Background="White" Visibility="Visible">
+            ToolTip="Icon" Margin="1284,606,10,10" Click="BTN_Exit_Click" />
+        <Canvas x:Name="CNV_Invites" Background="White" Visibility="Hidden">
             <Label Canvas.Left="1062" Canvas.Top="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" FontSize="16">Ajouter un invité :</Label>
             <TextBox x:Name="TBX_NomInvite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Canvas.Left="1054" Canvas.Top="90" materialDesign:HintAssist.HelperText="Nom"></TextBox>
             <TextBox x:Name="TBX_PrenomInvite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="153" Canvas.Left="1054" Canvas.Top="201" materialDesign:HintAssist.HelperText="Prénom"></TextBox>
@@ -79,5 +79,6 @@
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
             ToolTip="Icon" Margin="1284,610,10,10" Click="BTN_Retour_Click" />
         </Canvas>
+        <Label Content="Module organisateur" HorizontalAlignment="Center" VerticalAlignment="Top" Width="682" FontSize="72"/>
     </Grid>
 </Window>

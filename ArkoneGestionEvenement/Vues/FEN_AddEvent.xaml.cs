@@ -104,18 +104,18 @@ namespace ArkoneGestionEvenement.Vues
                 foreach(Invite inv in selectedInvites)
                 {
                     CodesAcce code = new CodesAcce();
-                    code.Statut = "En attente de réponse";
+                    code.Statut = "Attente";
                     code.Code = CodeAccesService.GenerateUniqueCode();
                     code.IdEvent = evenement.IdEvent;
                     code.IdInvite = inv.IdInvite;
                     code = CodeAccesService.AddCodeAcces(code);
 
-                    string smtpServer = "mail.champatux.fr";
-                    int smtpPort = 25;
+                    string smtpServer = "smtp-relay.brevo.com";
+                    int smtpPort = 587;
                     bool enableSsl = true;
-                    string smtpUsername = "tp";
-                    string smtpPassword = "34rV880SuCqXDA26969";
-                    string fromAddress = "tp@champatux.fr";
+                    string smtpUsername = "mathisbureau@gmail.com";
+                    string smtpPassword = "SNBjdK0xGbLPW7qa";
+                    string fromAddress = "mathisbureau@gmail.com";
                     string toAddress = inv.Email;
                     string subject = "Invitation à l'évenement : " + TBX_NomEvent.Text;
                     string body = "Félicitation " + inv.Prenom + " " + inv.Nom + ", vous avez été invité pour l'évenement suivant : " + TBX_NomEvent.Text +
@@ -136,6 +136,7 @@ namespace ArkoneGestionEvenement.Vues
             MessageBox.Show("Invitations envoyées ! Retour au menu");
             FEN_ModuleOrganisateur modOrga = new FEN_ModuleOrganisateur();
             modOrga.Show();
+            this.Close();
         }
 
         private bool ValidateFields()
@@ -196,6 +197,11 @@ namespace ArkoneGestionEvenement.Vues
             {
                 sous.NomSousEvent = TBX_NomSousEvent.Text;
                 sous.DateHeure = DTP_DateSousEvent.SelectedDate;
+                
+
+
+
+
                 //SousEventService.AddSousEvent()
             }
             

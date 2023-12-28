@@ -34,8 +34,9 @@
                 Content="Vigile"
                 IsChecked="False"
                 Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}" HorizontalAlignment="Center" Margin="0,496,0,182" />
-                
-                <Button  Margin="50,569,50,88" x:Name="BTN_create" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Créer le compte" Click="BTN_create_Click"></Button>
+                <Canvas Margin="0,528,5,0">
+                    <Button x:Name="BTN_create" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="54" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Créer le compte" Click="BTN_create_Click" Canvas.Left="45" Canvas.Top="64" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Canvas>
 
 
             </Grid>

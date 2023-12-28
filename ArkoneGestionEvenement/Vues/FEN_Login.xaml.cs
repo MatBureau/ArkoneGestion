@@ -47,10 +47,19 @@ namespace ArkoneGestionEvenement.Vues
 
             if (Utilisateur != null)
             {
-                VariablesGlobales.Utilisateur = Utilisateur;
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                this.Close();
+                VariablesGlobales.UtilisateurCourant = Utilisateur;
+                if(VariablesGlobales.UtilisateurCourant.IsVigile == true)
+                {
+                    FEN_ModuleVigile fen_vigile = new FEN_ModuleVigile();
+                    fen_vigile.Show();
+                    this.Close();
+                }
+                else
+                {
+                    FEN_ModuleOrganisateur fen_organisateur = new FEN_ModuleOrganisateur();
+                    fen_organisateur.Show();
+                    this.Close();
+                }
             }
             else
             {

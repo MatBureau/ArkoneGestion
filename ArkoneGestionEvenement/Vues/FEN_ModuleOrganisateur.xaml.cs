@@ -1,5 +1,6 @@
 ﻿using ArkoneGestionEvenement.DAL;
 using ArkoneGestionEvenement.Models;
+using ArkoneGestionEvenement.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -36,6 +37,7 @@ namespace ArkoneGestionEvenement.Vues
         {
             FEN_AddEvent fen = new FEN_AddEvent();
             fen.Show();
+            this.Close();
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -51,6 +53,9 @@ namespace ArkoneGestionEvenement.Vues
 
         private void BTN_Exit_Click(object sender, RoutedEventArgs e)
         {
+            VariablesGlobales.UtilisateurCourant = null;
+            FEN_Login fen = new FEN_Login();
+            fen.Show();
             this.Close();
         }
 
@@ -68,6 +73,7 @@ namespace ArkoneGestionEvenement.Vues
         {
             FEN_ModuleVigile fen = new FEN_ModuleVigile();
             fen.Show();
+            this.Close();
         }
 
         private void BTN_AddInvite_Click(object sender, RoutedEventArgs e)

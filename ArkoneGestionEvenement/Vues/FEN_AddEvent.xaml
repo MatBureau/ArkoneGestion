@@ -112,13 +112,13 @@
           Content="Sauvegarder"
           IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
           Style="{StaticResource MaterialDesignRaisedButton}"
-          ToolTip="Cela va envoyer les invitations aux personnes sélectionnées" Margin="265,397,418,21" Click="BTN_SaveAndSend_Click" />
+          ToolTip="Cela va envoyer les invitations aux personnes sélectionnées" Margin="265,397,418,15" Click="BTN_SaveAndSend_Click" />
         <Button
           x:Name="BTN_Annuler"
           Content="Annuler"
           IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
           Style="{StaticResource MaterialDesignRaisedButton}"
-          Margin="400,397,283,21" Click="BTN_Annuler_Click" />
+          Margin="400,397,283,14" Click="BTN_Annuler_Click" />
         <Button x:Name="BTN_AddSousEvent"
             HorizontalAlignment="Left"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
@@ -129,7 +129,8 @@
             Height="20"
             Kind="Alarm" />
         </Button>
-        <Canvas x:Name="CNV_AddSousEvent" Background="White" Visibility="Hidden">
+        <Label Content="*CTRL + Clic pour sélectionner plusieurs invités" HorizontalAlignment="Left" Margin="48,205,0,0" VerticalAlignment="Top" Width="178" FontSize="8"/>
+        <Canvas x:Name="CNV_AddSousEvent" Background="White" Visibility="Visible">
             <Grid Canvas.Left="365" Canvas.Top="140" HorizontalAlignment="Left" VerticalAlignment="Center" Width="248">
                 <TextBox
                     x:Name="TBX_NomSousEvent"
@@ -159,7 +160,7 @@
             <materialDesign:Clock
               x:Name="CLK_HourSousEvent"
               Width="auto"
-              DisplayAutomation="CycleWithSeconds"
+              DisplayAutomation="Cycle"
               Is24Hours="True"
               Style="{StaticResource MaterialDesignClock}" />
             <Button
@@ -174,6 +175,5 @@
           IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
           Style="{StaticResource MaterialDesignRaisedButton}" Click="BTN_AnnulerSousEvent_Click" Canvas.Left="547" Canvas.Top="391" HorizontalAlignment="Left" VerticalAlignment="Center" Width="118" />
         </Canvas>
-        <Label Content="*CTRL + Clic pour sélectionner plusieurs invités" HorizontalAlignment="Left" Margin="48,205,0,0" VerticalAlignment="Top" Width="178" FontSize="8"/>
     </Grid>
 </Window>

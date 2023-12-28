@@ -1,4 +1,5 @@
 ﻿using ArkoneGestionEvenement.DAL;
+using ArkoneGestionEvenement.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,6 +61,20 @@ namespace ArkoneGestionEvenement.Vues
         {
             TBX_CodeAcces.Text = "";
             CNV_Valide.Visibility = Visibility.Hidden;
+        }
+
+        private void BTN_Exit_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)VariablesGlobales.UtilisateurCourant.IsVigile)
+            {
+                this.Close();
+            }
+            else
+            {
+                FEN_ModuleOrganisateur fen = new FEN_ModuleOrganisateur();
+                fen.Show();
+                this.Close();
+            }
         }
     }
 }
