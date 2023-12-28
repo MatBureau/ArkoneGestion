@@ -55,17 +55,17 @@
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
             ToolTip="Icon" Margin="1284,606,10,10" Click="BTN_Exit_Click" />
         <Canvas x:Name="CNV_Invites" Background="White" Visibility="Hidden">
-            <Label Canvas.Left="1062" Canvas.Top="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" FontSize="16">Ajouter un invité :</Label>
-            <TextBox x:Name="TBX_NomInvite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Canvas.Left="1054" Canvas.Top="90" materialDesign:HintAssist.HelperText="Nom"></TextBox>
-            <TextBox x:Name="TBX_PrenomInvite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="153" Canvas.Left="1054" Canvas.Top="201" materialDesign:HintAssist.HelperText="Prénom"></TextBox>
-            <TextBox x:Name="TBX_TelephoneInvite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="153" Canvas.Left="1053" Canvas.Top="301" materialDesign:HintAssist.HelperText="Téléphone"></TextBox>
-            <TextBox x:Name="TBX_EmailInvite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="153" Canvas.Left="1054" Canvas.Top="400" materialDesign:HintAssist.HelperText="Email"></TextBox>
+            <Label Canvas.Left="1048" Canvas.Top="114" HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" FontSize="16">Ajouter un invité :</Label>
+            <TextBox x:Name="TBX_NomInvite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Canvas.Left="1040" Canvas.Top="174" materialDesign:HintAssist.HelperText="Nom"></TextBox>
+            <TextBox x:Name="TBX_PrenomInvite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="153" Canvas.Left="1040" Canvas.Top="285" materialDesign:HintAssist.HelperText="Prénom"></TextBox>
+            <TextBox x:Name="TBX_TelephoneInvite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="153" Canvas.Left="1039" Canvas.Top="385" materialDesign:HintAssist.HelperText="Téléphone"></TextBox>
+            <TextBox x:Name="TBX_EmailInvite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="153" Canvas.Left="1040" Canvas.Top="484" materialDesign:HintAssist.HelperText="Email"></TextBox>
             <Button
               x:Name="BTN_AddInvite"
               Content="{materialDesign:PackIcon AccountPlus}"
               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-              ToolTip="Icon" Canvas.Left="1091" Canvas.Top="486" Height="44" Width="77" Click="BTN_AddInvite_Click" />
-            <DataGrid IsReadOnly="True" x:Name="DTG_Invite" ItemsSource="{Binding lst_Invites}" AutoGenerateColumns="False" HorizontalAlignment="Left" Width="782" Height="511" VerticalAlignment="Top" SelectionChanged="DataGrid_SelectionChanged" Canvas.Left="40" Canvas.Top="49" CanUserAddRows="False" Cursor="">
+              ToolTip="Icon" Canvas.Left="1077" Canvas.Top="570" Height="44" Width="77" Click="BTN_AddInvite_Click" />
+            <DataGrid IsReadOnly="True" x:Name="DTG_Invite" ItemsSource="{Binding lst_Invites}" AutoGenerateColumns="False" HorizontalAlignment="Center" Width="782" Height="512" VerticalAlignment="Top" SelectionChanged="DataGrid_SelectionChanged" Canvas.Left="40" Canvas.Top="102" CanUserAddRows="False" Cursor="">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding IdInvite}" Width="100" />
                     <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" Width="150"/>

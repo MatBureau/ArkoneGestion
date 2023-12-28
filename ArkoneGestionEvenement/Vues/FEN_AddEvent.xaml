@@ -18,7 +18,7 @@
             x:Name="TBX_Longitude"
             VerticalAlignment="Top"
             materialDesign:TextFieldAssist.HasClearButton="True"
-            materialDesign:TextFieldAssist.PrefixText="$"
+            materialDesign:TextFieldAssist.PrefixText="°"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="56,28,10,0">
                 <materialDesign:HintAssist.Hint>
                     <StackPanel
@@ -36,7 +36,7 @@
                 x:Name="TBX_Latitude"
             VerticalAlignment="Top"
             materialDesign:TextFieldAssist.HasClearButton="True"
-            materialDesign:TextFieldAssist.PrefixText="$"
+            materialDesign:TextFieldAssist.PrefixText="°"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="56,28,10,0">
                 <materialDesign:HintAssist.Hint>
                     <StackPanel
@@ -54,7 +54,6 @@
                 x:Name="TBX_Lieu"
             VerticalAlignment="Top"
             materialDesign:TextFieldAssist.HasClearButton="True"
-            materialDesign:TextFieldAssist.PrefixText="$"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="56,28,10,0">
                 <materialDesign:HintAssist.Hint>
                     <StackPanel
@@ -72,7 +71,6 @@
                 x:Name="TBX_NomEvent"
             VerticalAlignment="Top"
             materialDesign:TextFieldAssist.HasClearButton="True"
-            materialDesign:TextFieldAssist.PrefixText="$"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="56,28,10,0">
                 <materialDesign:HintAssist.Hint>
                     <StackPanel
@@ -130,7 +128,7 @@
             Kind="Alarm" />
         </Button>
         <Label Content="*CTRL + Clic pour sélectionner plusieurs invités" HorizontalAlignment="Left" Margin="48,205,0,0" VerticalAlignment="Top" Width="178" FontSize="8"/>
-        <Canvas x:Name="CNV_AddSousEvent" Background="White" Visibility="Visible">
+        <Canvas x:Name="CNV_AddSousEvent" Background="White" Visibility="Hidden">
             <Grid Canvas.Left="365" Canvas.Top="140" HorizontalAlignment="Left" VerticalAlignment="Center" Width="248">
                 <TextBox
                     x:Name="TBX_NomSousEvent"

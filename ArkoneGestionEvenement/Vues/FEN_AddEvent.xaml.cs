@@ -98,7 +98,6 @@ namespace ArkoneGestionEvenement.Vues
                 evenement.Latitude = TBX_Latitude.Text;
                 evenement.Longitude = TBX_Longitude.Text;
                 evenement.Lieu = TBX_Lieu.Text;
-
                 evenement = EvenementService.AddEvenement(evenement);
 
                 foreach(Invite inv in selectedInvites)

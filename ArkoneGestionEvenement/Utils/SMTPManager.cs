@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Net;
 using System.Net.Mail;
+using System.Net.Mime;
 using System.Text.RegularExpressions;
 using System.Windows;
 
@@ -17,6 +18,20 @@ namespace ArkoneGestionEvenement.Utils
             mail.Subject = subject;
             mail.Body = body;
             mail.IsBodyHtml = false;
+
+            // Créez une vue alternative pour le corps du courrier électronique en HTML
+            AlternateView htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
+
+            // Chargez l'image depuis le chemin du fichier et spécifiez le type MIME
+            LinkedResource imageResource = new LinkedResource("Assets/Images/arkoneMail.png");
+            imageResource.ContentId = Guid.NewGuid().ToString(); // Identifiant unique pour l'image
+            imageResource.ContentType.MediaType = MediaTypeNames.Image.Jpeg;
+
+            // Ajoutez l'image à la vue alternative
+            htmlView.LinkedResources.Add(imageResource);
+
+            // Ajoutez la vue alternative au courrier électronique
+            mail.AlternateViews.Add(htmlView);
 
             // Client SMTP
             SmtpClient smtpClient = new SmtpClient(smtpServer);
