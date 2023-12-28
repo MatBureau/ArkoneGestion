@@ -33,9 +33,15 @@
                 <CheckBox x:Name="cbx_vigile"
                 Content="Vigile"
                 IsChecked="False"
-                Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}" HorizontalAlignment="Center" Margin="0,496,0,182" />
-                
-                <Button  Margin="50,569,50,88" x:Name="BTN_create" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Créer le compte" Click="BTN_create_Click"></Button>
+                Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}" HorizontalAlignment="Center" Margin="0,535,0,143" />
+
+                <Button  Margin="50,584,50,73" x:Name="BTN_create" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Créer le compte" Click="BTN_create_Click"></Button>
+                <Label x:Name="lbl_user" Content="6 Caractères minimum" HorizontalAlignment="Center" Margin="0,192,0,0" VerticalAlignment="Top" Width="300" Foreground="Black" IsEnabled="False"/>
+                <Label x:Name="lbl_password" Content="Caractère spéciaux &#xA;Majuscule et Minuscule &#xA;12 caractère minimum requis" HorizontalAlignment="Center" Margin="0,463,0,0" VerticalAlignment="Top" Width="300" Foreground="Black" Height="72" IsEnabled="False"/>
+               
+                <Label x:Name="lbl_userError" Content="" HorizontalAlignment="Center" Margin="0,192,0,0" VerticalAlignment="Top" Width="300" Foreground="RED" Visibility="Hidden"/>
+                <Label x:Name="lbl_mailError" Content="" HorizontalAlignment="Center" Margin="0,285,0,0" VerticalAlignment="Top" Width="300" Foreground="Red" Visibility="Hidden"/>
+                <Label x:Name="lbl_passwordError" Content="" HorizontalAlignment="Center" Margin="0,463,0,0" VerticalAlignment="Top" Width="300" Foreground="Red" Height="72" Visibility="Hidden"/>
 
 
             </Grid>

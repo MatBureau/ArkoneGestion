@@ -32,6 +32,8 @@ namespace ArkoneGestionEvenement.Vues
             logo.UriSource = uri;
             logo.EndInit();
             img_logo.Source = logo;
+
+            lbl_ErreurConnexion.Visibility = Visibility.Hidden;
         }
 
         private void loginBtn_Click(object sender, RoutedEventArgs e)
@@ -41,20 +43,22 @@ namespace ArkoneGestionEvenement.Vues
 
             string hashedPassword = Utils.SecurityManager.HashPassword(password);
 
+            //LBL_ErreurConnexion.Foreground = Brushes.Black;
+
 
             // Appelez la fonction SelectJoueur avec les valeurs de l'interface utilisateur
             Utilisateur Utilisateur = ConnexionService.SelectUtilisateurByNameAndPwd(userName, hashedPassword);
 
             if (Utilisateur != null)
             {
-                VariablesGlobales.Utilisateur = Utilisateur;
+                VariablesGlobales.UtilisateurCourant = Utilisateur;
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Identifiant ou mot de passe incorrect.");
+                lbl_ErreurConnexion.Visibility = Visibility.Visible;
             }
         }
 

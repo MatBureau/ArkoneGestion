@@ -21,6 +21,10 @@ public partial class ArkoneGestionContext : DbContext
 
     public virtual DbSet<Invite> Invites { get; set; }
 
+    public virtual DbSet<InvitesRegroupement> InvitesRegroupements { get; set; }
+
+    public virtual DbSet<RegroupementInvite> RegroupementInvites { get; set; }
+
     public virtual DbSet<SousEvenement> SousEvenements { get; set; }
 
     public virtual DbSet<Utilisateur> Utilisateurs { get; set; }
@@ -74,6 +78,24 @@ public partial class ArkoneGestionContext : DbContext
             entity.Property(e => e.Nom).HasMaxLength(255);
             entity.Property(e => e.Prenom).HasMaxLength(255);
             entity.Property(e => e.Telephone).HasMaxLength(20);
+        });
+
+        modelBuilder.Entity<InvitesRegroupement>(entity =>
+        {
+            entity.HasOne(d => d.IdInviteNavigation).WithMany(p => p.InvitesRegroupements)
+                .HasForeignKey(d => d.IdInvite)
+                .HasConstraintName("FK_InvitesRegroupements_Invite");
+
+            entity.HasOne(d => d.IdRegroupementNavigation).WithMany(p => p.InvitesRegroupements)
+                .HasForeignKey(d => d.IdRegroupement)
+                .HasConstraintName("FK_InvitesRegroupements_Regroupement");
+        });
+
+        modelBuilder.Entity<RegroupementInvite>(entity =>
+        {
+            entity.HasKey(e => e.IdRegroupement);
+
+            entity.Property(e => e.NomRegroupement).HasMaxLength(255);
         });
 
         modelBuilder.Entity<SousEvenement>(entity =>

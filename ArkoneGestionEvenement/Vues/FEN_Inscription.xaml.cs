@@ -1,6 +1,7 @@
 ﻿using ArkoneGestionEvenement.DAL;
 using ArkoneGestionEvenement.Models;
 using ArkoneGestionEvenement.Utils;
+using MaterialDesignColors.Recommended;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -39,30 +40,40 @@ namespace ArkoneGestionEvenement.Vues
                 string password = tbx_password.Password;
                 bool isVigile = false;
 
-                if (!Utils.ControlSaisie.IsValidEmail(mail))
-                {
-                    MessageBox.Show("Adresse e-mail invalide");
-                    return;
-                }
+                SetControlsDefaultVisibilty();
 
                 // Vérification du format du nom d'utilisateur
                 if (!Utils.ControlSaisie.IsValidUsername(userName))
                 {
-                    MessageBox.Show("Nom d'utilisateur invalide");
+                    lbl_user.Visibility = Visibility.Hidden;
+                    lbl_userError.Content = "Nom d'utilisateur invalide";
+                    lbl_userError.Visibility = Visibility.Visible;
+
+                    return;
+                }
+
+                if (!Utils.ControlSaisie.IsValidEmail(mail))
+                {
+                    lbl_mailError.Content = "Adresse mail invalide.";
+                    lbl_mailError.Visibility= Visibility.Visible;
                     return;
                 }
 
                 // Vérification du format du mot de passe
                 if (!Utils.ControlSaisie.IsValidPassword(password))
                 {
-                    MessageBox.Show("Mot de passe invalide");
+                    lbl_password.Visibility = Visibility.Hidden;
+                    lbl_passwordError.Content = "Mot de passe invalide";
+                    lbl_passwordError.Visibility = Visibility.Visible;
                     return;
                 }
 
                 if (tbx_password.Password != tbx_passwordConfirme.Password)
                 {
-                    MessageBox.Show("les mots de passes ne sont pas identiques");
-
+                    lbl_password.Visibility = Visibility.Hidden;
+                    lbl_passwordError.Visibility = Visibility.Visible;
+                    lbl_passwordError.Content = "Les mots de passes ne sont pas identiques.";
+                    return;
                 }
                 else
 
@@ -91,7 +102,14 @@ namespace ArkoneGestionEvenement.Vues
             
         }
 
-
+        private void SetControlsDefaultVisibilty()
+        {
+            lbl_user.Visibility = Visibility.Visible;
+            lbl_password.Visibility = Visibility.Visible;
+            lbl_mailError.Visibility = Visibility.Hidden;
+            lbl_userError.Visibility = Visibility.Hidden;
+            lbl_passwordError.Visibility = Visibility.Hidden;
+        }
         private void btn_exit_Click(object sender, RoutedEventArgs e)
         {
             FEN_Login fen_Login = new FEN_Login();

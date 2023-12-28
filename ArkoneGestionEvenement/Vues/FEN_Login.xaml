@@ -7,28 +7,32 @@
         
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="FEN_Login" Height="760" Width="450" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="Transparent" MouseMove="Window_MouseMove"> 
-    <materialDesign:Card UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}">
-        <materialDesign:DialogHost CloseOnClickAway="True" x:Name="DialogHost">
-            <StackPanel>
+        Title="FEN_Login" Height="760" Width="450" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="Transparent" MouseMove="Window_MouseMove">
+    <Grid>
+        <materialDesign:Card UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}">
+            <materialDesign:DialogHost CloseOnClickAway="True" x:Name="DialogHost">
+                <StackPanel>
 
-                <Button x:Name="btn_exit" Content="X" Width="56" HorizontalAlignment="Right" Click="btn_exit_Click"/>
-                <Image x:Name="img_logo" Margin="0,60,0,5" Source="Assets/Images/logo.png" Height="100"></Image>
+                    <Button x:Name="btn_exit" Content="X" Width="56" HorizontalAlignment="Right" Click="btn_exit_Click"/>
+                    <Image x:Name="img_logo" Margin="0,60,0,5" Source="Assets/Images/logo.png" Height="100"></Image>
 
-                <TextBlock Margin="0,25,0,5" HorizontalAlignment="Center" FontSize="28" FontWeight="Bold" Text="Bienvenue !" />
+                    <TextBlock Margin="0,25,0,5" HorizontalAlignment="Center" FontSize="28" FontWeight="Bold" Text="Bienvenue !" />
 
-                <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Connectez-vous"></TextBlock>
+                    <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Connectez-vous"></TextBlock>
 
-                <TextBox Margin="0,50,0,0" Text="" x:Name="tbx_user" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Entrez votre nom d'utilisateur" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"  Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="tbx_user_KeyDown" />
+                    <TextBox Margin="0,50,0,0" Text="" x:Name="tbx_user" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Entrez votre nom d'utilisateur" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"  Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="tbx_user_KeyDown" />
 
-                <PasswordBox Margin="0,20,0,0" x:Name="tbx_password" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Entrez votre mot de passe" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" KeyDown="tbx_password_KeyDown"/>
+                    <PasswordBox Margin="0,20,0,0" x:Name="tbx_password" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Entrez votre mot de passe" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" KeyDown="tbx_password_KeyDown"/>
 
-                <Button  Margin="0,20,0,0" x:Name="loginBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}"  Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Connexion" Click="loginBtn_Click"></Button>
+                    <Button  Margin="0,20,0,0" x:Name="loginBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}"  Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Connexion" Click="loginBtn_Click"></Button>
 
-                <Button Margin="0,20,0,0" x:Name="BTN_signUp" Style="{StaticResource MaterialDesignFlatButton}"  Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Créer un compte" Click="BTN_signUp_Click"/>
+                    <Button Margin="0,20,0,0" x:Name="BTN_signUp" Style="{StaticResource MaterialDesignFlatButton}"  Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Créer un compte" Click="BTN_signUp_Click"/>
 
 
-            </StackPanel>
-        </materialDesign:DialogHost>
-    </materialDesign:Card>
+                </StackPanel>
+            </materialDesign:DialogHost>
+        </materialDesign:Card>
+        <Label x:Name="lbl_ErreurConnexion" Margin="98,303,98,429" HorizontalContentAlignment="Center" Width="Auto" Height="Auto" Content="Utilisateur ou mot de passe incorrect" Foreground="Red" FontSize="14">
+        </Label>
+    </Grid>
 </Window>
