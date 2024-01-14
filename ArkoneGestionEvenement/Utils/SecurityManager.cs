@@ -15,7 +15,6 @@ namespace ArkoneGestionEvenement.Utils
             {
                 byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
 
-                // Utiliser StringBuilder pour construire la chaîne hexadécimale directement
                 StringBuilder builder = new StringBuilder();
 
                 foreach (byte b in hashedBytes)

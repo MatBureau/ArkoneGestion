@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ArkoneGestionEvenement.Vues"
+        xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -13,7 +14,7 @@
         FontFamily="{materialDesign:MaterialDesignFont}"
         Title="FEN_ModuleOrganisateur" Height="652" Width="1344" MouseMove="Window_MouseMove" WindowStyle="None" ResizeMode="NoResize" BorderThickness="2" BorderBrush="MediumPurple" WindowStartupLocation="CenterScreen">
     <Grid>
-        <DataGrid IsReadOnly="True" CanUserAddRows="False" x:Name="DTG_Event" ItemsSource="{Binding evenements}" Margin="10,108,0,0" AutoGenerateColumns="False" HorizontalAlignment="Left" Width="1065" Height="481" VerticalAlignment="Top" SelectionChanged="DataGrid_SelectionChanged">
+        <DataGrid IsReadOnly="True" CanUserAddRows="False" x:Name="DTG_Event" ItemsSource="{Binding evenements}" Margin="10,156,0,0" AutoGenerateColumns="False" HorizontalAlignment="Left" Width="1065" Height="433" VerticalAlignment="Top" SelectionChanged="DataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding IdEvent}" Width="100" />
                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" Width="150"/>
@@ -24,12 +25,12 @@
                 <DataGridTextColumn Header="Organisateur" Binding="{Binding IdOrganisateur}" Width="150"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Grid Margin="1080,108,10,294">
+        <Grid Margin="1080,79,10,141">
             <Button x:Name="BTN_AddEvent"
                 materialDesign:ButtonAssist.CornerRadius="10"
                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignRaisedButton}"
-                HorizontalAlignment="Left" Width="140" Height="32" VerticalAlignment="Top" Click="BTN_AddEvent_Click" Margin="74,10,0,0" Cursor="Hand">
+                HorizontalAlignment="Left" Width="140" Height="32" VerticalAlignment="Top" Click="BTN_AddEvent_Click" Margin="74,26,0,0" Cursor="Hand">
                 <TextBlock
               Text="Créer évenement" />
             </Button>
@@ -49,11 +50,34 @@
                 <TextBlock
               Text="Validation code" />
             </Button>
+            <Button x:Name="BTN_DeleteEvent"
+                materialDesign:ButtonAssist.CornerRadius="10"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                HorizontalAlignment="Left" Width="140" Height="32" VerticalAlignment="Top" Click="BTN_DeleteEvent_Click" Margin="74,264,0,0" Cursor="Hand">
+                <TextBlock
+                    Text="Supprimer event"/>
+            </Button>
+            <Button x:Name="BTN_Statistiques"
+    materialDesign:ButtonAssist.CornerRadius="10"
+    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+    Style="{StaticResource MaterialDesignRaisedButton}"
+    HorizontalAlignment="Left" Width="140" Height="32" VerticalAlignment="Top" Click="BTN_Statistiques_Click" Margin="74,341,0,0" Cursor="Hand">
+                <TextBlock
+        Text="Statistiques"/>
+            </Button>
         </Grid>
         <Button x:Name="BTN_Exit"
             Content="{materialDesign:PackIcon ExitToApp}"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
             ToolTip="Icon" Margin="1284,606,10,10" Click="BTN_Exit_Click" />
+        <Button
+  x:Name="BTN_SearchEvent"
+  Content="{materialDesign:PackIcon AccountSearch}"
+  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+  ToolTip="Icon" Canvas.Left="766" Canvas.Top="101" Height="35" Width="56" Click="BTN_Search_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1019,108,0,0" />
+        <TextBox x:Name="TBX_SearchEvent" HorizontalContentAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1001" Canvas.Left="40" Canvas.Top="101" Height="35" materialDesign:HintAssist.HelperText="Rechercher un event" TextChanged="TBX_SearchEvent_TextChanged" Margin="10,108,0,0"/>
+
         <Canvas x:Name="CNV_Invites" Background="White" Visibility="Hidden">
             <Label Canvas.Left="1048" Canvas.Top="114" HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" FontSize="16">Ajouter un invité :</Label>
             <TextBox x:Name="TBX_NomInvite" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Canvas.Left="1040" Canvas.Top="174" materialDesign:HintAssist.HelperText="Nom"></TextBox>
@@ -65,7 +89,19 @@
               Content="{materialDesign:PackIcon AccountPlus}"
               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
               ToolTip="Icon" Canvas.Left="1077" Canvas.Top="570" Height="44" Width="77" Click="BTN_AddInvite_Click" />
-            <DataGrid IsReadOnly="True" x:Name="DTG_Invite" ItemsSource="{Binding lst_Invites}" AutoGenerateColumns="False" HorizontalAlignment="Center" Width="782" Height="512" VerticalAlignment="Top" SelectionChanged="DataGrid_SelectionChanged" Canvas.Left="40" Canvas.Top="102" CanUserAddRows="False" Cursor="">
+            <Label Canvas.Left="838" Canvas.Top="292" HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" FontSize="16">Créer un groupe :</Label>
+            <Button
+              x:Name="BTN_CreateGrouping"
+              Content="{materialDesign:PackIcon AccountGroup}"
+              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+              ToolTip="Icon" Canvas.Left="877" Canvas.Top="324" Height="35" Width="56" Click="BTN_CreateGrouping_Click" />
+            <Button
+              x:Name="BTN_Search"
+              Content="{materialDesign:PackIcon AccountSearch}"
+              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+              ToolTip="Icon" Canvas.Left="766" Canvas.Top="101" Height="35" Width="56" Click="BTN_Search_Click" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <TextBox x:Name="TBX_Search" HorizontalContentAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Center" Width="721" Canvas.Left="40" Canvas.Top="101" Height="35" materialDesign:HintAssist.HelperText="Rechercher un utilisateur" TextChanged="TBX_Search_TextChanged"/>
+            <DataGrid IsReadOnly="True" x:Name="DTG_Invite" ItemsSource="{Binding lst_Invites}" AutoGenerateColumns="False" HorizontalAlignment="Center" Width="782" Height="452" VerticalAlignment="Top" SelectionMode="Extended" SelectionChanged="DataGrid_SelectionChanged" Canvas.Left="40" Canvas.Top="162" CanUserAddRows="False" Cursor="">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding IdInvite}" Width="100" />
                     <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" Width="150"/>
@@ -78,6 +114,35 @@
             Content="{materialDesign:PackIcon ExitToApp}"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
             ToolTip="Icon" Margin="1284,610,10,10" Click="BTN_Retour_Click" />
+        </Canvas>
+        <Canvas x:Name="CNV_Statistiques" Background="White" Visibility="Hidden">
+            <materialDesign:Card Width="200" Canvas.Left="46" Canvas.Top="214">
+                <Grid Height="221">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="140" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image Width="196"
+                 Height="140"
+                 Source="\Assets\Images\arkoneMail.png"
+                 Stretch="UniformToFill" />
+                    <Button Grid.Row="0"
+                  Margin="0,0,16,-20"
+                  HorizontalAlignment="Right"
+                  VerticalAlignment="Bottom"
+                  Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryButton}">
+                        <materialDesign:PackIcon Kind="PartyPopper" />
+                    </Button>
+                    <StackPanel Grid.Row="1" Margin="8,24,8,0">
+                        <TextBlock x:Name="TBX_EventNameStat" FontWeight="Bold">Nom evenement</TextBlock>
+                        <TextBlock x:Name="TBX_EventInfo" VerticalAlignment="Center"
+                       Text="Lieu : Annonay, Longitude : 23, latitude : 456, date: 10/10/10"
+                       TextWrapping="Wrap" />
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+            <oxy:PlotView Model="{Binding StatInvite}" Height="456" Width="676" Canvas.Left="332" Canvas.Top="96" HorizontalAlignment="Left" VerticalAlignment="Top" />
         </Canvas>
         <Label Content="Module organisateur" HorizontalAlignment="Center" VerticalAlignment="Top" Width="682" FontSize="72"/>
     </Grid>

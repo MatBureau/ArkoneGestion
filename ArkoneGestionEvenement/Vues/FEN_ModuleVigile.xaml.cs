@@ -1,4 +1,5 @@
 ﻿using ArkoneGestionEvenement.DAL;
+using ArkoneGestionEvenement.Models;
 using ArkoneGestionEvenement.Utils;
 using System;
 using System.Collections.Generic;
@@ -36,10 +37,23 @@ namespace ArkoneGestionEvenement.Vues
                     LBL_ErreurCode.Visibility = Visibility.Hidden;
                     var invite = InviteService.GetInvite((int)acces.IdInvite);
                     var evenement = EvenementService.GetEvenement((int) acces.IdEvent);
+                    var regroupeInviteCourant = InviteRegroupeService.GetInviteRegroupeByInviteId(invite.IdInvite);
+                    var regroupeInvite = InviteRegroupeService.GetInviteRegroupeByRegroupementId((int)regroupeInviteCourant.First().IdRegroupement);
                     
                     LBL_NomEvent.Content = evenement.Nom;
-                    LBL_NomInvite.Content = invite.Nom + " " + invite.Prenom;
                     
+                    LBL_NomInvite.ContentStringFormat = "Wrap";
+
+                    List<Invite> inviteARegrouper = new List<Invite>();
+                    foreach (InvitesRegroupement reg in regroupeInvite)
+                    {
+                        inviteARegrouper.Add(InviteService.GetInvite((int)reg.IdInvite));
+                    }
+                    LBL_NomInvite.Content = "Invités autorisés :";
+                    foreach (Invite inv in inviteARegrouper)
+                    {
+                        LBL_NomInvite.Content += "\n - " + inv.Nom + " " + inv.Prenom;
+                    }
                     acces.Statut = "Entré";
                     CodeAccesService.UpdateCodeAcces(acces);
                     CNV_Valide.Visibility = Visibility.Visible;

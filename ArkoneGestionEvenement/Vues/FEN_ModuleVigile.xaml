@@ -13,7 +13,7 @@
         FontFamily="{materialDesign:MaterialDesignFont}"
         Title="FEN_ModuleVigile" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" MouseMove="Window_MouseMove">
     <Grid>
-        <TextBox x:Name="TBX_CodeAcces" HorizontalAlignment="Center" Margin="0,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="335" Height="95" FontSize="72" BorderThickness="2" BorderBrush="#FFDAA4DA" MaxLength="6" HorizontalContentAlignment="Center"/>
+        <TextBox x:Name="TBX_CodeAcces" HorizontalAlignment="Center" Margin="0,130,0,0" TextWrapping="Wrap" AcceptsReturn="False" AcceptsTab="False" Text="" VerticalAlignment="Top" Width="335" Height="95" FontSize="72" BorderThickness="2" BorderBrush="#FFDAA4DA" MaxLength="6" HorizontalContentAlignment="Center"/>
         <Button x:Name="BTN_Exit"
         Content="{materialDesign:PackIcon ExitToApp}"
         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
@@ -46,14 +46,14 @@
               x:Name="BTN_ValiderEntree"
               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
               Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
-              ToolTip="MaterialDesignFloatingActionDarkButton" Height="61" Canvas.Left="368" Canvas.Top="369" Width="64" Click="BTN_ValiderEntree_Click">
+              ToolTip="Valider l'entrée" Height="61" Canvas.Left="368" Canvas.Top="369" Width="64" Click="BTN_ValiderEntree_Click">
                 <materialDesign:PackIcon
                     Width="48"
                     Height="45"
                     Kind="Check" />
             </Button>
-            <Label x:Name="LBL_NomInvite" Content="Nom de l'invite" Canvas.Left="226" Canvas.Top="181" HorizontalAlignment="Left" VerticalAlignment="Top" Width="348" HorizontalContentAlignment="Center" Height="44" FontSize="22"/>
-            <Label x:Name="LBL_NomEvent" Content="Nom de l'evenement" Canvas.Left="226" Canvas.Top="251" HorizontalAlignment="Center" VerticalAlignment="Top" Width="348" HorizontalContentAlignment="Center" Height="51" FontSize="18"/>
+            <Label x:Name="LBL_NomInvite" Content="Nom de l'invite" Canvas.Left="226" Canvas.Top="147" HorizontalAlignment="Center" VerticalAlignment="Top" Width="348" HorizontalContentAlignment="Center" Height="179" FontSize="22"/>
+            <Label x:Name="LBL_NomEvent" Content="Nom de l'evenement" Canvas.Left="226" Canvas.Top="331" HorizontalAlignment="Center" VerticalAlignment="Top" Width="348" HorizontalContentAlignment="Center" Height="33" FontSize="18"/>
         </Canvas>
     </Grid>
 </Window>

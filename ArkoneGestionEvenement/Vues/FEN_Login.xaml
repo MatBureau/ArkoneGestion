@@ -23,7 +23,7 @@
 
                 <PasswordBox Margin="0,20,0,0" x:Name="tbx_password" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Entrez votre mot de passe" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" KeyDown="tbx_password_KeyDown"/>
 
-                <Button  Margin="0,20,0,0" x:Name="loginBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}"  Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Connexion" Click="loginBtn_Click"></Button>
+                <Button  Margin="0,20,0,0" x:Name="loginBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}"  Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Connexion" Click="loginBtn_Click" MouseRightButtonDown="loginBtn_MouseRightButtonDown"></Button>
 
                 <Button Margin="0,20,0,0" x:Name="BTN_signUp" Style="{StaticResource MaterialDesignFlatButton}"  Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Créer un compte" Click="BTN_signUp_Click"/>
 

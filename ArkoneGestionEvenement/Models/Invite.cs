@@ -18,4 +18,6 @@ public partial class Invite
     public bool? Confirmation { get; set; }
 
     public virtual ICollection<CodesAcce> CodesAcces { get; set; } = new List<CodesAcce>();
+
+    public virtual ICollection<InvitesRegroupement> InvitesRegroupements { get; set; } = new List<InvitesRegroupement>();
 }

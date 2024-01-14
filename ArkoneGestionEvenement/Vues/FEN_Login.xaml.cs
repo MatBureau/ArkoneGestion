@@ -41,17 +41,26 @@ namespace ArkoneGestionEvenement.Vues
 
             string hashedPassword = Utils.SecurityManager.HashPassword(password);
 
-
-            // Appelez la fonction SelectJoueur avec les valeurs de l'interface utilisateur
             Utilisateur Utilisateur = ConnexionService.SelectUtilisateurByNameAndPwd(userName, hashedPassword);
 
             if (Utilisateur != null)
             {
                 VariablesGlobales.UtilisateurCourant = Utilisateur;
-                if(VariablesGlobales.UtilisateurCourant.IsVigile == true)
+                //random pour avoir 5% de chance d'avoir un easter egg
+
+                Random random = new Random();
+                int randomValue = random.Next(0, 101);
+                if (VariablesGlobales.UtilisateurCourant.IsVigile == true && randomValue > 5)
                 {
                     FEN_ModuleVigile fen_vigile = new FEN_ModuleVigile();
                     fen_vigile.Show();
+                    this.Close();
+                    
+                }
+                else if(randomValue <= 5)
+                {
+                    FEN_EasterEgg fen_easterEgg = new FEN_EasterEgg();
+                    fen_easterEgg.Show();
                     this.Close();
                 }
                 else
@@ -99,6 +108,38 @@ namespace ArkoneGestionEvenement.Vues
             FEN_Inscription fen_inscription = new FEN_Inscription();
             fen_inscription.Show();
             this.Close();
+        }
+
+        //CETTE FONCTION EST TEMPORAIRE ET M'EVITE DE DEVOIR ME CONNECTER A CHAQUE FOIS
+        private void loginBtn_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Utilisateur Utilisateur = ConnexionService.SelectUtilisateurByNameAndPwd("mathis", "98d0b0c7e5d776a77dd1f21682d6aa482d223cd77795b6171f4d125990761561");
+
+            VariablesGlobales.UtilisateurCourant = Utilisateur;
+            
+            Random random = new Random();
+            int randomValue = random.Next(0, 101);
+            if (VariablesGlobales.UtilisateurCourant.IsVigile == true && randomValue > 5)
+            {
+                FEN_ModuleVigile fen_vigile = new FEN_ModuleVigile();
+                fen_vigile.Show();
+                this.Close();
+
+            }
+            else if (randomValue <= 5)
+            {
+                //FEN_EasterEgg fen_easterEgg = new FEN_EasterEgg();
+                //fen_easterEgg.Show();
+                FEN_ModuleOrganisateur fen_organisateur = new FEN_ModuleOrganisateur();
+                fen_organisateur.Show();
+                this.Close();
+            }
+            else
+            {
+                FEN_ModuleOrganisateur fen_organisateur = new FEN_ModuleOrganisateur();
+                fen_organisateur.Show();
+                this.Close();
+            }
         }
     }
 }

@@ -50,7 +50,7 @@ namespace ArkoneGestionEvenement.DAL
                 return db.CodesAcces.Where(e => e.Code == code).FirstOrDefault();
             }
         }
-        //fonction pour modifier un code d'acces
+
         public static CodesAcce UpdateCodeAcces(CodesAcce codeToUpdate)
         {
             using (ArkoneGestionContext db = new ArkoneGestionContext())
@@ -58,6 +58,23 @@ namespace ArkoneGestionEvenement.DAL
                 db.Entry(codeToUpdate).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 db.SaveChanges();
                 return codeToUpdate;
+            }
+        }
+
+        public static void DeleteCodeAcces(CodesAcce codeToDelete)
+        {
+            using (ArkoneGestionContext db = new ArkoneGestionContext())
+            {
+                db.CodesAcces.Remove(codeToDelete);
+                db.SaveChanges();
+            }
+        }
+
+        public static List<CodesAcce> GetCodeAccesByEventId(int eventId)
+        {
+            using (ArkoneGestionContext db = new ArkoneGestionContext())
+            {
+                return db.CodesAcces.Where(e => e.IdEvent == eventId).ToList();
             }
         }
     }

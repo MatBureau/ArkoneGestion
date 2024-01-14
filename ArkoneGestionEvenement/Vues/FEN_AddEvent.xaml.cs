@@ -112,15 +112,44 @@ namespace ArkoneGestionEvenement.Vues
                     string smtpServer = "smtp-relay.brevo.com";
                     int smtpPort = 587;
                     bool enableSsl = true;
-                    string smtpUsername = "mathisbureau@gmail.com";
-                    string smtpPassword = "SNBjdK0xGbLPW7qa";
+                    string smtpUsername = "mbureau@myriadev.fr";
+                    string smtpPassword = "Z5NmhTw1bz4YgU7K";//"SNBjdK0xGbLPW7qa";//"xsmtpsib-51b32aa76324672440387186c8cc9bbb37a3bea2929bafee3f9619e8301e9388-gKvnLhwH4UxD7k6Q";
                     string fromAddress = "mathisbureau@gmail.com";
                     string toAddress = inv.Email;
                     string subject = "Invitation à l'évenement : " + TBX_NomEvent.Text;
-                    string body = "Félicitation " + inv.Prenom + " " + inv.Nom + ", vous avez été invité pour l'évenement suivant : " + TBX_NomEvent.Text +
+                    string body = "";
+                    List<InvitesRegroupement> InviteCourant = InviteRegroupeService.GetAllInviteRegroupe().Where(x => x.IdInvite == inv.IdInvite).ToList();
+                    List<InvitesRegroupement> lst_regroupe = InviteRegroupeService.GetAllInviteRegroupe()
+                        .Where(x => x.IdRegroupement == InviteCourant.First().IdRegroupement) // Filtrez par l'IdRegroupement de l'invité courant
+                        .ToList();
+
+                    List<Invite> inviteARegrouper = new List<Invite>();
+                    foreach(InvitesRegroupement reg in lst_regroupe)
+                    {
+                        inviteARegrouper.Add(InviteService.GetInvite((int)reg.IdInvite));
+                    }
+                    
+                    if(inviteARegrouper.Count > 0)
+                    {
+                        body = "Félicitation " + inv.Prenom + " " + inv.Nom + ", vous avez été invité pour l'évenement suivant : " + TBX_NomEvent.Text +
                         ".\n\rVous trouverez ci-joint le lieu, les coordonnées gps et votre code d'invitation" +
                         "\n\r Code : " + code.Code + "\n\r Coordonnées : " + evenement.Latitude + " " + evenement.Longitude + " \n\r Lieu : " + evenement.Lieu +
                         "\n\r Au plaisir de vous voir parmis nous ! \n\r Arkone Gestion.";
+
+                        body += "\n\r\n\rVous êtes libre d'inviter les personnes suivantes :";
+
+                        foreach (Invite invReg in inviteARegrouper)
+                        {
+                            if(invReg.IdInvite != inv.IdInvite) body += "\n\r\n\r - " + invReg.Prenom + " " + invReg.Nom;
+                        }
+                    }
+                    else
+                    {
+                        body = "Félicitation " + inv.Prenom + " " + inv.Nom + ", vous avez été invité pour l'évenement suivant : " + TBX_NomEvent.Text +
+                        ".\n\rVous trouverez ci-joint le lieu, les coordonnées gps et votre code d'invitation" +
+                        "\n\r Code : " + code.Code + "\n\r Coordonnées : " + evenement.Latitude + " " + evenement.Longitude + " \n\r Lieu : " + evenement.Lieu +
+                        "\n\r Au plaisir de vous voir parmis nous ! \n\r Arkone Gestion.";
+                    }
 
                     if (SMTPManager.IsValidEmail(toAddress))
                     {
@@ -196,12 +225,6 @@ namespace ArkoneGestionEvenement.Vues
             {
                 sous.NomSousEvent = TBX_NomSousEvent.Text;
                 sous.DateHeure = DTP_DateSousEvent.SelectedDate;
-                
-
-
-
-
-                //SousEventService.AddSousEvent()
             }
             
         }

@@ -36,5 +36,15 @@ namespace ArkoneGestionEvenement.DAL
                 return db.Evenements.Find(id);
             }
         }
+
+        public static void DeleteEvenement(Evenement eventToDelete)
+        {
+            using (ArkoneGestionContext db = new ArkoneGestionContext())
+            {
+                db.CodesAcces.RemoveRange(db.CodesAcces.Where(x => x.IdEvent == eventToDelete.IdEvent));
+                db.Evenements.Remove(eventToDelete);
+                db.SaveChanges();
+            }
+        }
     }
 }

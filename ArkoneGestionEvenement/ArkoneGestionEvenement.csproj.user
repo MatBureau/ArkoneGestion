@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Vues\FEN_EasterEgg.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Vues\FEN_Inscription.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -30,6 +33,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Vues\FEN_AddEvent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vues\FEN_EasterEgg.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Vues\FEN_ModuleOrganisateur.xaml">
